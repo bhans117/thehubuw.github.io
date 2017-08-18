@@ -5,3 +5,14 @@ machine:
   node:
     version:
       8.1.4
+
+compile:
+  override:
+    - sh ./build_stage.sh
+
+
+deployment:
+  staging:
+    branch: master
+    commands:
+      - sh ./deploy_staging.sh
