@@ -8,11 +8,15 @@ machine:
 
 compile:
   override:
-    - sh ./build_stage.sh
+    - sh ./build_scripts/build.sh
+
+test:
+  override:
+    - sh ./build_scripts/test.sh
 
 
 deployment:
   staging:
     branch: master
     commands:
-      - sh ./deploy_staging.sh
+      - sh ./build_scripts/deploy.sh
