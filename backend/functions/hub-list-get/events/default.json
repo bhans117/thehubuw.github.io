@@ -1,0 +1,10 @@
+{
+  "resource": "",
+  "path": "",
+  "httpMethod": "GET",
+  "headers": {},
+  "queryStringParameters": { "email": "chrisdolszewski@gmail.com" },
+  "pathParameters": {},
+  "stageVariables": {},
+  "body": null
+}

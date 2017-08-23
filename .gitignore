@@ -60,3 +60,5 @@ typings/
 # dotenv environment variables file
 .env
 
+# built lambda functions
+backend/dist
