@@ -16,7 +16,14 @@ export default class SignUp extends Component {
 
   render() {
     return (
-      <div />
+      <div>
+        <form>
+          <label>Email
+            <input type='email' value={this.state.value} onChange={this.handleChange} />
+          </label>
+          <input type='Submit' />
+        </form>
+      </div>
     );
   }
 }
