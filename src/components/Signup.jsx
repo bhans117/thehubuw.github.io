@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
+const FormActions = require('../actions/FormActions');
 
 export default class SignUp extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      value: '',
-    };
-
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(event) {
-    this.setState({ value: event.target.value });
+    FormActions.set(event.target.value);
+    //this.setState({ value: event.target.value });
   }
 
   render() {
@@ -19,7 +17,7 @@ export default class SignUp extends Component {
       <div>
         <form>
           <label>Email
-            <input type='email' value={this.state.value} onChange={this.handleChange} />
+            <input type='email' value={this.props.value} onChange={this.handleChange} />
           </label>
           <input type='Submit' />
         </form>
