@@ -1,10 +1,12 @@
 {
   "resource": "",
   "path": "",
-  "httpMethod": "GET",
+  "httpMethod": "POST",
   "headers": {},
   "queryStringParameters": {},
   "pathParameters": {},
   "stageVariables": {},
-  "body": null
+  "body": {
+    "email": "pdqman@gmail.com"
+  }
 }

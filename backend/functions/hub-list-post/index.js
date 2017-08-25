@@ -1,21 +1,28 @@
-import Promise from 'bluebird'
 import { mc } from '../../lib/mailchimp'
 
 export function handler (event, context, callback) {
-  return addEmailToList(event).asCallback(callback)
+  main(event)
+    .then((resp) => {
+      callback(null, resp)
+    })
+    .catch((err) => {
+      callback(err)
+    })
 }
 
-function addEmailToList (event) {
+function main (event) {
   const email = event.body.email
   return addToMailchimp(email)
     .then((resp) => {
-      return { statusCode: 200, headers: {}, body: resp.body }
+      const { status } = resp.body
+      return { statusCode: 200, headers: {}, body: { email, status } }
     })
 }
 
 function addToMailchimp (email, fields = {}) {
   const url = `3.0/lists/${process.env.MC_LIST}/members`
   const options = {
+    method: 'POST',
     body: {
       email_address: email,
       status: 'subscribed',
