@@ -1,5 +1,6 @@
 import { createHash } from 'crypto'
 import { mc } from '../../lib/mailchimp'
+import { CORS_HEADERS } from '../../lib/cors'
 
 export function handler (event, context, callback) {
   main(event)
@@ -23,10 +24,10 @@ function main (event) {
 
   return mc(`3.0/lists/${process.env.MC_LIST}/members/${emailHash}`)
     .then((resp) => {
-      return { statusCode: 200, headers: {}, body: resp.body.status }
+      return { statusCode: 200, headers: CORS_HEADERS, body: resp.body.status }
     })
     .catch((err) => {
-      if (err.statusCode === 404) { return { statusCode: 404, headers: {}, body: err.statusMessage } }
+      if (err.statusCode === 404) { return { statusCode: 404, headers: CORS_HEADERS, body: err.statusMessage } }
       throw err
     })
 }
