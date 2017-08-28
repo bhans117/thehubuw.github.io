@@ -3,6 +3,7 @@ import Navigation from '../components/Navigation';
 import Header from '../components/Header';
 import Signup from '../components/Signup';
 import Members from '../components/Members';
+import Footer from '../components/Footer';
 const FormStore = require('../stores/FormStore');
 
   function getAppState() {
@@ -33,6 +34,7 @@ export default class FormStoreApp extends Component {
       <Header />
       <Signup value={this.state.value}/>
       <Members />
+      <Footer />
     </div>
     )
   }

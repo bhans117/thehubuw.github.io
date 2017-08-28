@@ -18,13 +18,18 @@ export default class SignUp extends Component {
 
   render() {
     return (
-      <section id='email-list'>
-        <form>
-          <label>Email
-            <input type='email' value={this.props.value} onChange={this.handleChange} />
-          </label>
-          <input type='button' onClick={onSubmit} />
-        </form>
+      <section className="bg-white" id='email-list'>
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12 text-center">
+              <h2 className="section-heading">Email List</h2>
+              <h3 className="email-subheading text-muted">Sign up for our email list to receive updates on events</h3>
+              <input className="col-sm-4 text-box" type='email' value={this.props.value} onChange={this.handleChange} />
+              <br />
+              <input className="btn btn-xl js-scroll-trigger" value='Sign Up' type='button' onClick={onSubmit} />
+            </div>
+          </div>
+        </div>
       </section>
     );
   }

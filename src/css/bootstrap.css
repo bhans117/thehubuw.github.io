@@ -2516,11 +2516,11 @@ input[type="button"].btn-block {
 
 @media (max-width: 992px) {
   .collapse {
-  max-height: 0px;
-  -webkit-transition: all 1s ease;
-  -moz-transition: all 1s ease;
-  transition: all 1s ease;
-  overflow: hidden;}
+    max-height: 0px;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    transition: all 1s ease;
+    overflow: hidden;}
   .collapse.show {
     max-height: 200px;}
 }
