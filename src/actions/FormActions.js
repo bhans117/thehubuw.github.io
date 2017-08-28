@@ -10,6 +10,19 @@ const FormStoreActions = {
     });
   },
 
+  submit: () => {
+    AppDispatcher.handleViewAction({
+      actionType: FormConstants.SUBMIT,
+    });
+  },
+
+  APIResponse: (data) => {
+    AppDispatcher.handleViewAction({
+      actionType: FormConstants.API_RESPONSE,
+      data,
+    });
+  },
+
 };
 
 module.exports = FormStoreActions;

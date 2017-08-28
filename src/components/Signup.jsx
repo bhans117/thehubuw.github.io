@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 const FormActions = require('../actions/FormActions');
 
+function onSubmit() {
+  FormActions.submit();
+}
+
 export default class SignUp extends Component {
   constructor(props) {
     super(props);
@@ -19,7 +23,7 @@ export default class SignUp extends Component {
           <label>Email
             <input type='email' value={this.props.value} onChange={this.handleChange} />
           </label>
-          <input type='Submit' />
+          <input type='button' onClick={onSubmit} />
         </form>
       </div>
     );

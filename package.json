@@ -8,8 +8,10 @@
     "got": "^7.1.0",
     "key-mirror": "^1.0.1",
     "react": "^15.6.1",
+    "react-bootstrap": "^0.31.2",
     "react-dom": "^15.6.1",
     "react-scripts": "1.0.10",
+    "request": "2.79.0",
     "request-promise": "^4.2.1"
   },
   "scripts": {

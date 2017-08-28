@@ -26,7 +26,7 @@ function addToMailchimp (email, fields = {}) {
     method: 'POST',
     body: {
       email_address: email,
-      status: 'subscribed',
+      status: 'pending',
       merge_fields: fields
     }
   }
