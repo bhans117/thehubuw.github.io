@@ -18,7 +18,7 @@ export default class Navigaiton extends Component {
 
   render() {
   return (
-   <nav className="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+   <nav className="navbar navbar-shrink navbar-expand-lg navbar-dark fixed-top" id="mainNav">
       <div className="container">
       <a className="navbar-brand js-scroll-trigger" href="#page-top">The Hub</a>
 
@@ -29,16 +29,13 @@ export default class Navigaiton extends Component {
         <div className={this.state.navClass} id="navbarResponsive">
           <ul className="navbar-nav ml-auto" onClick={this.onClick}>
             <li className="nav-item">
-              <a className="nav-link js-scroll-trigger" href="#services">Services</a>
+              <a className="nav-link js-scroll-trigger" href="#updates">Updates</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
+              <a className="nav-link js-scroll-trigger" href="#email-list">Email List</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link js-scroll-trigger" href="#about">About</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link js-scroll-trigger" href="#team">Team</a>
+              <a className="nav-link js-scroll-trigger" href="#members">Members</a>
             </li>
             <li className="nav-item">
               <a className="nav-link js-scroll-trigger" href="#contact">Contact</a>

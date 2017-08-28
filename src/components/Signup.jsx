@@ -18,14 +18,14 @@ export default class SignUp extends Component {
 
   render() {
     return (
-      <div>
+      <section id='email-list'>
         <form>
           <label>Email
             <input type='email' value={this.props.value} onChange={this.handleChange} />
           </label>
           <input type='button' onClick={onSubmit} />
         </form>
-      </div>
+      </section>
     );
   }
 }
