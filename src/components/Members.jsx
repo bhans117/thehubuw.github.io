@@ -28,7 +28,7 @@ var obj = {
 
 export default function Members(props) {
   return (
-    <section className="bg-light" id="members">
+    <section className="bg-white" id="members">
       <div className="container">
         <div className="row">
           <div className="col-lg-12 text-center">

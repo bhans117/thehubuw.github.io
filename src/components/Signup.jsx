@@ -18,7 +18,7 @@ export default class SignUp extends Component {
 
   render() {
     return (
-      <section className="bg-white" id='email-list'>
+      <section className="bg-light" id='email-list'>
         <div className="container">
           <div className="row">
             <div className="col-lg-12 text-center">
