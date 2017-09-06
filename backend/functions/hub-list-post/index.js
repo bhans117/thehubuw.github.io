@@ -16,7 +16,7 @@ function main (event) {
   return addToMailchimp(email)
     .then((resp) => {
       const { status } = resp.body
-      return { statusCode: 200, headers: CORS_HEADERS, body: { email, status } }
+      return { statusCode: 200, headers: CORS_HEADERS, body: JSON.stringify({ email, status }) }
     })
 }
 
