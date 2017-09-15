@@ -6,7 +6,5 @@
   "queryStringParameters": {},
   "pathParameters": {},
   "stageVariables": {},
-  "body": {
-    "email": "pdqman@gmail.com"
-  }
+  "body": "{\"email\": \"hdv987@gmail.com\" }"
 }
