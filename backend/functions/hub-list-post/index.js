@@ -11,7 +11,7 @@ export function handler (event, context, callback) {
     })
     .catch((err) => {
       console.log(err)
-      callback(null, { statusCode: 500, headers: CORS_HEADERS, body: err })
+      callback(null, { statusCode: 500, headers: CORS_HEADERS, body: JSON.stringify(err) })
     })
   } catch (err) {
     console.log(err)
