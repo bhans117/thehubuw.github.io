@@ -2,33 +2,49 @@ const AppDispatcher = require('../dispatcher/AppDispatcher');
 const FormConstants = require('../constants/FormStoreConstants');
 const EventEmitter = require('events').EventEmitter;
 const MailChimpUtil = require('../util/MailChimpUtil');
+const SignUpConstants = require('../constants/SignUpConstants');
 
 let formInfo = {};
 
 
 function loadFormInfo(data) {
-  formInfo = data.formInfo;
+  formInfo = data;
 }
 
 loadFormInfo(
   {
-    formInfo: {
-      email: {
-        value: '',
-      },
-    },
+    email: { value: '' },
+    firstName: { value: '' },
+    lastName: { value: '' },
+    submit: false,
   },
 );
 
 // set the data in a specific text feild of the form
-function set(data) {
-  formInfo.email.value = data;
-  // do something
+function set(data, type) {
+  switch (type) {
+    case SignUpConstants.EMAIL:
+      formInfo.email.value = data;
+      break;
+    case SignUpConstants.FIRST_NAME:
+      formInfo.firstName.value = data;
+      break;
+    case SignUpConstants.LAST_NAME:
+      formInfo.lastName.value = data;
+      break;
+    default:
+      // do nothing
+  }
 }
 
 function submit() {
   console.log(formInfo.email.value);
-  MailChimpUtil.addSubscriber(formInfo.email.value);
+  MailChimpUtil.addSubscriber(
+    formInfo.email.value,
+    formInfo.firstName.value,
+    formInfo.lastName.value,
+  );
+  formInfo.submit = true;
 }
 
 function mailDecision(data) {
@@ -75,7 +91,7 @@ AppDispatcher.register((payload) => {
 
   switch (action.actionType) {
     case FormConstants.SET:
-      set(action.data);
+      set(action.data, action.type);
       break;
 
     case FormConstants.SUBMIT:

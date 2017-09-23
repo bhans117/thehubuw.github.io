@@ -28,11 +28,17 @@ export default class FormStoreApp extends Component {
   }
 
   render() {
+    console.log(this.state);
     return (
     <div id="page-top">
       <Navigation />
       <Header />
-      <Signup value={this.state.value}/>
+      <Signup 
+        submit={this.state.form.submit} 
+        email={this.state.form.email} 
+        firstName={this.state.form.firstName}
+        lastName={this.state.form.lastName}
+      />
       <Members />
       <Footer />
     </div>

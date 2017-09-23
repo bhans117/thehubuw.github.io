@@ -3,10 +3,11 @@ const FormConstants = require('../constants/FormStoreConstants');
 
 const FormStoreActions = {
 
-  set: (data) => {
+  set: (data, type) => {
     AppDispatcher.handleViewAction({
       actionType: FormConstants.SET,
       data,
+      type,
     });
   },
 
