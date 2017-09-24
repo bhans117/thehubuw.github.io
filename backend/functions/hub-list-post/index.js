@@ -22,7 +22,8 @@ export function handler (event, context, callback) {
 function main (body) {
   console.log(body)
   const email = body.email
-  return addToMailchimp(email)
+  const fields = body.fields
+  return addToMailchimp(email, fields)
     .then((resp) => {
       const { status } = resp.body
       return { statusCode: 200, headers: CORS_HEADERS, body: JSON.stringify({ email, status }) }

@@ -14,15 +14,12 @@ export function getSubscriberStatus(email) {
     });
 }
 
-export function addSubscriber(email, firstName, lastName) {
+export function addSubscriber(email, fields = {}) {
   const options = {
     method: 'POST',
     uri: `${hubUrl}/list`,
-    body: {
-      email,
-      firstName,
-      lastName,
-    },
+    body: { email, fields },
+
     json: true,
   };
   rp.post(options)
