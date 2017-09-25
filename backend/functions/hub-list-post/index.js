@@ -36,8 +36,8 @@ function addToMailchimp (email, fields = {firstName, lastName}) {
     method: 'POST',
     body: {
       email_address: email,
-      status: 'pending',
-      merge_fields: {"FNAME": fields.fristName , "LNAME": fields.lastname}
+      status: 'subscribed',
+      merge_fields: {"FNAME": "first name", "LNAME": "last name"}
     }
   }
 
