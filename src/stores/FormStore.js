@@ -17,6 +17,9 @@ loadFormInfo(
     firstName: { value: '' },
     lastName: { value: '' },
     submit: false,
+    validated: false,
+    memberStatus: '',
+    status: '',
   },
 );
 
@@ -39,32 +42,53 @@ function set(data, type) {
 
 function submit() {
   console.log(formInfo.email.value);
-  MailChimpUtil.addSubscriber(
-    formInfo.email.value,
-    formInfo.firstName.value,
-    formInfo.lastName.value,
-  );
   formInfo.submit = true;
+
+  MailChimpUtil.getSubscriberStatus(formInfo.email.value);
+  if (formInfo.email.value === '') {
+    formInfo.validated = false;
+  } else {
+    MailChimpUtil.addSubscriber(
+      formInfo.email.value,
+      formInfo.firstName.value,
+      formInfo.lastName.value,
+    );
+    formInfo.validated = true;
+  }
 }
 
-function mailDecision(data) {
-  console.log(data);
+function memberStatus(data) {
   switch (data) {
     case 'subscribed':
       console.log('subscribed case');
+      formInfo.memberStatus = 'subscribed';
       break;
     case 'unsubscribed':
       console.log('unsubscribed case');
+      formInfo.memberStatus = 'unsubscribed';
       break;
     case 'pending':
       console.log('pending case');
+      formInfo.memberStatus = 'pending';
       break;
     case 'cleaned':
       console.log('cleaned case');
+      formInfo.memberStatus = 'cleaned';
       break;
     default:
       console.log('defualt case');
   }
+}
+
+function status(data) {
+  if (data.statusCode !== undefined) {
+    formInfo.status = data.statusCode;
+    formInfo.validated = false;
+  } else {
+    formInfo.status = data.status;
+    formInfo.validated = true;
+  }
+  console.log(formInfo.status);
 }
 
 /* eslint-disable class-methods-use-this */
@@ -99,10 +123,14 @@ AppDispatcher.register((payload) => {
       break;
 
     case FormConstants.API_RESPONSE:
-      mailDecision(action.data);
+      memberStatus(action.data);
       break;
     default:
       return true;
+
+    case FormConstants.API_RESPONSE_POST:
+      status(action.data);
+      break;
   }
 
   formStore.emitChange();

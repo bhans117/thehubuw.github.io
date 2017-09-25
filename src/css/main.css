@@ -10,6 +10,9 @@ body {
 p {
   line-height: 1.75; }
 
+p.text-danger {
+    color: #e74c3c; }
+    
 a {
   color: #fed136; }
   a.active, a:active, a:focus, a:hover {

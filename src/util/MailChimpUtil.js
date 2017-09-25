@@ -11,6 +11,7 @@ export function getSubscriberStatus(email) {
     .catch((err) => {
       // API call failed...
       console.log(`Failed API Call ${err}`);
+      FormActions.APIResponse(err);
     });
 }
 
@@ -25,9 +26,11 @@ export function addSubscriber(email, firstName, lastName) {
   rp.post(options)
     .then((repos) => {
       console.log(repos);
+      FormActions.APIResponsePost(repos);
     })
     .catch((err) => {
       // API call failed...
       console.log(`Failed API Call ${err}`);
+      FormActions.APIResponsePost(err);
     });
 }

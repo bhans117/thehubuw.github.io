@@ -28,7 +28,6 @@ export default class FormStoreApp extends Component {
   }
 
   render() {
-    console.log(this.state);
     return (
     <div id="page-top">
       <Navigation />
@@ -38,6 +37,9 @@ export default class FormStoreApp extends Component {
         email={this.state.form.email} 
         firstName={this.state.form.firstName}
         lastName={this.state.form.lastName}
+        validated={this.state.form.validated}
+        memberStatus={this.state.form.memberStatus}
+        status={this.state.form.status}
       />
       <Members />
       <Footer />

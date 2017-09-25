@@ -24,6 +24,13 @@ const FormStoreActions = {
     });
   },
 
+  APIResponsePost: (data) => {
+    AppDispatcher.handleViewAction({
+      actionType: FormConstants.API_RESPONSE_POST,
+      data,
+    });
+  },
+
 };
 
 module.exports = FormStoreActions;
