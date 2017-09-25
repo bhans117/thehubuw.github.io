@@ -30,14 +30,14 @@ function main (body) {
     })
 }
 
-function addToMailchimp (email, fields = {}) {
+function addToMailchimp (email, fields = {firstName, lastName}) {
   const url = `3.0/lists/${process.env.MC_LIST}/members`
   const options = {
     method: 'POST',
     body: {
       email_address: email,
       status: 'pending',
-      merge_fields: fields
+      merge_fields: {"FNAME": fields.fristName , "LNAME": fields.lastname}
     }
   }
 
