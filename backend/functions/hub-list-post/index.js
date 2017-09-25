@@ -22,22 +22,23 @@ export function handler (event, context, callback) {
 function main (body) {
   console.log(body)
   const email = body.email
-  const fields = body.fields
-  return addToMailchimp(email, fields)
+  const firstName = body.firstName
+  const lastName = body.lastName
+  return addToMailchimp(email, firstName, lastName)
     .then((resp) => {
       const { status } = resp.body
       return { statusCode: 200, headers: CORS_HEADERS, body: JSON.stringify({ email, status }) }
     })
 }
 
-function addToMailchimp (email, fields = {firstName, lastName}) {
+function addToMailchimp (email, firstName, lastName) {
   const url = `3.0/lists/${process.env.MC_LIST}/members`
   const options = {
     method: 'POST',
     body: {
       email_address: email,
       status: 'subscribed',
-      merge_fields: {"FNAME": "first name", "LNAME": "last name"}
+      merge_fields: {"FNAME": firstName, "LNAME": lastName}
     }
   }
 
