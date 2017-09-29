@@ -3,6 +3,7 @@ import Navigation from '../components/Navigation';
 import Header from '../components/Header';
 import Signup from '../components/Signup';
 import Members from '../components/Members';
+import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 const FormStore = require('../stores/FormStore');
 
@@ -42,6 +43,7 @@ export default class FormStoreApp extends Component {
         status={this.state.form.status}
       />
       <Members />
+      <Contact />
       <Footer />
     </div>
     )

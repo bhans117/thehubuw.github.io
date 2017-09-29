@@ -29,9 +29,6 @@ export default class Navigaiton extends Component {
         <div className={this.state.navClass} id="navbarResponsive">
           <ul className="navbar-nav ml-auto" onClick={this.onClick}>
             <li className="nav-item">
-              <a className="nav-link js-scroll-trigger" href="#updates">Updates</a>
-            </li>
-            <li className="nav-item">
               <a className="nav-link js-scroll-trigger" href="#email-list">Email List</a>
             </li>
             <li className="nav-item">

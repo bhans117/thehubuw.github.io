@@ -3,6 +3,7 @@ const FormConstants = require('../constants/FormStoreConstants');
 const EventEmitter = require('events').EventEmitter;
 const MailChimpUtil = require('../util/MailChimpUtil');
 const SignUpConstants = require('../constants/SignUpConstants');
+const Regex = require('regex-email');
 
 let formInfo = {};
 
@@ -17,7 +18,7 @@ loadFormInfo(
     firstName: { value: '' },
     lastName: { value: '' },
     submit: false,
-    validated: false,
+    validated: true,
     memberStatus: '',
     status: '',
   },
@@ -40,20 +41,23 @@ function set(data, type) {
   }
 }
 
-function submit() {
-  console.log(formInfo.email.value);
-  formInfo.submit = true;
+function validate() {
+  return Regex.test(formInfo.email.value);
+}
 
-  MailChimpUtil.getSubscriberStatus(formInfo.email.value);
-  if (formInfo.email.value === '') {
+function submit() {
+  formInfo.submit = true;
+  console.log(formInfo.email.value);
+  if (!validate()) {
     formInfo.validated = false;
   } else {
+    formInfo.validated = true;
+    MailChimpUtil.getSubscriberStatus(formInfo.email.value);
     MailChimpUtil.addSubscriber(
       formInfo.email.value,
       formInfo.firstName.value,
       formInfo.lastName.value,
     );
-    formInfo.validated = true;
   }
 }
 
@@ -83,10 +87,8 @@ function memberStatus(data) {
 function status(data) {
   if (data.statusCode !== undefined) {
     formInfo.status = data.statusCode;
-    formInfo.validated = false;
   } else {
     formInfo.status = data.status;
-    formInfo.validated = true;
   }
   console.log(formInfo.status);
 }

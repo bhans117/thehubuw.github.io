@@ -22,7 +22,8 @@ export default class SignUp extends Component {
             type='email' 
             value={this.props.email.value} 
             placeholder="Email"
-            onChange={this.handleChange} />
+            onChange={this.handleChange}
+             />
           <br />
           {error}
           <input 
@@ -41,7 +42,7 @@ export default class SignUp extends Component {
             placeholder="Last Name"
             onChange={this.handleChange} />
           <br />
-          <input className="btn btn-xl js-scroll-trigger" value='Subscribe' type='button' onClick={onSubmit} />
+          <input type="submit" className="btn btn-xl js-scroll-trigger" value='Subscribe' onClick={onSubmit} />
         </form>
   )
 }
@@ -51,37 +52,25 @@ export default class SignUp extends Component {
   }
 
   render() {
-    let display;
-
-    if (this.props.submit) {
-      if (this.props.memberStatus === 'subscribed') {
+    let display = this.setDisplayError();
+    console.log(this.props.memberStatus);
+      if (this.props.memberStatus === "subscribed") {
         display = (
-          <div>
-            <p>We already have the email <b><i>{this.props.email.value}</i></b> on our list. If you are not getting our emails, make sure you check your spam folder.</p>
-          </div>
-        )
-      } else if (this.props.memberStatus === 'pending') {
-        display = (
-          <div>
-            <p>Thank you for subscribing! We sent an email to <b><i>{this.props.email.value}</i></b> for you to comfirm your subscription.</p>
-          </div>
-        );
-      } else if (!this.props.validated) {
-        display = this.setDisplayError(
-          <div>
-            <p className="text-danger">*VALID EMAIL IS REQUIRED</p>
-          </div>
-        )
-      } else {
-        display = (
-          <div>
-            <p>Thank you for subscribing! We sent an email to <b><i>{this.props.email.value}</i></b> for you to comfirm your subscription.</p>
-          </div>
+          <p>You are already subscribed using <b><i>{this.props.email.value}</i></b></p>
         )
       }
-    } else {
-        display = this.setDisplayError();
-      } 
+      else if (this.props.submit && this.props.validated) {
+        display = (
+          <div>
+            <h5>Thank you for subscribing! We sent an email to <b><i>{this.props.email.value}</i></b> for you to comfirm your subscription.</h5>
+            <p>If you do not see an email from us, check your spam because you may already be subscribed or pending (you have not clicked on the confirmation email).
+            If it is still missing, try reloding the page and re-entring you email.
+            Report problems to <b>thehubuw@gmail.com</b>.</p>
+          </div>
+        )
+      } else if (this.props.submit && !this.props.validated) {
+        display = this.setDisplayError(<p className="text-danger">*INVALID EMAIL</p>);
+      }
     return (
       <section className="bg-light" id='email-list'>
         <div className="container">
